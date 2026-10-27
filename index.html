@@ -662,25 +662,38 @@
   .ht-pick { display:none; margin:14px 16px 18px; padding:18px 16px 16px; border-radius:16px;
              background:linear-gradient(160deg, rgba(201,168,76,.18), rgba(139,105,20,.06)); border:1px solid rgba(201,168,76,.45); }
   .ht-pick.on { display:block; }
-  .ht-pick-label { font-size:12px; letter-spacing:.08em; color:var(--gold-light); font-weight:700; margin-bottom:8px; }
-  .ht-pick-symptom { font-size:19px; font-weight:800; line-height:1.4; margin-bottom:12px; }
+  .ht-pick-label { font-size:12.5px; letter-spacing:.08em; color:var(--gold-light); font-weight:800; margin-bottom:8px; }
+  .ht-pick-symptom { font-size:19px; font-weight:800; line-height:1.4; margin-bottom:12px; color:#FFF6E0; word-break:keep-all; }
   .ht-pick-row { display:flex; gap:14px; align-items:center; }
   .ht-pick-row img { width:116px; height:116px; object-fit:cover; border-radius:12px; background:#fff; flex:none; }
   .ht-pick-name { font-size:15px; font-weight:700; line-height:1.35; }
-  .ht-pick-past { font-size:12.5px; color:var(--text-dim); margin:6px 0; line-height:1.45; }
-  .ht-pick-meta { font-size:13px; }
-  .ht-pick-cta { display:block; margin-top:14px; padding:14px; border-radius:12px; text-align:center; font-weight:800;
-                  font-size:16px; background:var(--naver); color:#fff; text-decoration:none; }
-  .ht-pick-skip, .ht-skip { font-size:11.5px; color:var(--text-dim); margin-top:8px; line-height:1.4; }
-  .ht-group { margin: 6px 0 14px; }
-  .ht-group-title { margin:10px 16px 8px; font-size:15px; font-weight:800; color:var(--gold-light); }
+  .ht-pick-past { font-size:13px; color:#E2CE9E; margin:6px 0; line-height:1.5; }
+  .ht-pick-meta { font-size:13.5px; }
+  .ht-pick-cta { display:flex; align-items:center; justify-content:center; min-height:52px; margin-top:14px; border-radius:12px;
+                  font-weight:800; font-size:16px; background:var(--naver); color:#fff; text-decoration:none; }
+  .ht-pick-skip { font-size:12px; color:#CDBB91; margin-top:8px; line-height:1.45; }
+  .ht-section-sub { margin:6px 0 0; font-size:13.5px; color:#E2CE9E; }
+  .ht-group { margin: 26px 0 8px; }
+  .ht-group-head { display:flex; align-items:center; gap:12px; margin:0 0 14px; padding:14px 14px 14px 12px;
+                    border-radius:14px; background:linear-gradient(100deg, rgba(240,201,107,.17), rgba(240,201,107,.03));
+                    border:1px solid rgba(240,201,107,.35); border-left:5px solid var(--gold-light); }
+  .ht-num { font-size:13px; font-weight:800; letter-spacing:.06em; color:var(--black); background:var(--gold-light);
+             border-radius:8px; padding:4px 7px; flex:none; }
+  .ht-ico { width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex:none;
+             color:var(--gold-light); background:rgba(240,201,107,.14); }
+  .ht-head-txt { min-width:0; }
+  .ht-group-title { margin:0; font-size:19px; font-weight:800; line-height:1.3; color:#FFF6E0; word-break:keep-all; }
+  .ht-group-sub { margin:3px 0 0; font-size:13px; line-height:1.45; color:#E2CE9E; word-break:keep-all; }
+  .ht-wrap .product-reason { font-size:12.5px; color:#E6D6B0; line-height:1.4; }
+  .ht-wrap .ht-skip { font-size:11.5px; color:#CDBB91; line-height:1.4; margin-top:7px; min-height:3.2em; }
+  .ht-wrap .product-cta { display:flex !important; align-items:center; justify-content:center; font-size:13.5px; padding:12px 8px; min-height:44px; }
 </style>
 <div class="ht-wrap">
 <div class="notice-bar">본 페이지는 네이버 브랜드커넥트 활동의 일환으로, 링크를 통해 구매 시 수수료를 제공받습니다</div>
 <div class="ht-pick" id="ht-pick">
   <div class="ht-pick-label">방금 본 영상 속 그 물건</div>
   <div class="ht-pick-symptom" id="ht-symptom"></div>
-  <div class="ht-pick-row"><img id="ht-img" alt="">
+  <div class="ht-pick-row"><img id="ht-img" alt="" width="116" height="116">
     <div><div class="ht-pick-name" id="ht-name"></div><div class="ht-pick-past" id="ht-past"></div><div class="ht-pick-meta" id="ht-meta"></div></div></div>
   <a class="ht-pick-cta" id="ht-cta" target="_blank" rel="noopener nofollow sponsored">네이버에서 보기</a>
   <div class="ht-pick-skip" id="ht-skip"></div>
@@ -688,119 +701,186 @@
 <section class="products-section">
   <div class="section-head">
     <div class="section-label">FOR HEALTH</div>
-    <div class="section-title">🌿 건강 고민별로 골랐습니다</div>
+    <h2 class="section-title">건강 고민별로 골랐습니다</h2>
+    <p class="ht-section-sub">지금 내 몸에 맞는 고민부터 보세요</p>
     <div class="divider"></div>
   </div>
-<div class="ht-group"><div class="ht-group-title">아침이 무겁고 몸이 차다</div>
-<div class="products-grid">
-<a href="https://naver.me/GuD6zTXP" class="product-item" target="_blank" rel="noopener nofollow sponsored" data-goatcounter-click="hp-ginger" data-goatcounter-title="생강청 (고민별)">
-  <div class="product-thumb"><img src="img/ht_ginger.jpg" alt="힘가네 생강청 600g" loading="lazy"></div>
+<div class="ht-group" id="ht-g01">
+  <div class="ht-group-head">
+    <span class="ht-num" aria-hidden="true">01</span>
+    <span class="ht-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/><path d="M12 18h.01"/></svg></span>
+    <div class="ht-head-txt"><h3 class="ht-group-title">아침이 무겁고 몸이 차다</h3><p class="ht-group-sub">손발이 차고 아침마다 몸이 천근이라면</p></div>
+  </div>
+  <div class="products-grid">
+<a href="https://naver.me/GuD6zTXP" class="product-item" target="_blank" rel="noopener nofollow sponsored" data-goatcounter-click="hp-ginger" data-goatcounter-title="생강청 (고민 01)">
+  <div class="product-thumb"><img src="img/ht_ginger.jpg" alt="힘가네 생강청 600g" loading="lazy" width="400" height="400"></div>
   <div class="product-body">
     <div class="product-tag">생강청</div>
     <div class="product-name">힘가네 생강청 600g</div>
-    <div class="product-reason">손발이 차고 아침이 무겁다면, 물에 타서 몸을 데워 마시는 것부터</div>
+    <div class="product-reason">물에 타서 몸을 데워 마시는 생강청</div>
     <div class="pb-now">26,800원</div>
     <div class="pb-trust">⭐4.8 · 리뷰 76,028</div>
     <div class="ht-skip">생강 맛이 맞지 않으면 안 사도 됩니다.</div>
   </div>
-  <div class="product-cta">N 쇼핑에서 보기</div>
+  <div class="product-cta">네이버에서 보기</div>
 </a>
-<a href="https://naver.me/FaeKMWqR" class="product-item" target="_blank" rel="noopener nofollow sponsored" data-goatcounter-click="hp-pumpkin" data-goatcounter-title="호박즙 (고민별)">
-  <div class="product-thumb"><img src="img/ht_pumpkin.jpg" alt="자람푸드 늙은 호박즙 30포" loading="lazy"></div>
-  <div class="product-body">
-    <div class="product-tag">호박즙</div>
-    <div class="product-name">자람푸드 늙은 호박즙 30포</div>
-    <div class="product-reason">아침마다 얼굴이 붓는다면, 아침에 한 포 마시는 것부터</div>
-    <div class="pb-now">16,900원</div>
-    <div class="pb-trust">⭐4.84 · 리뷰 5,764</div>
-    <div class="ht-skip">붓기가 며칠씩 이어진다면 상품보다 병원이 먼저입니다.</div>
-  </div>
-  <div class="product-cta">N 쇼핑에서 보기</div>
-</a>
-<a href="https://naver.me/5l2Aevoc" class="product-item" target="_blank" rel="noopener nofollow sponsored" data-goatcounter-click="hp-ssanghwa" data-goatcounter-title="쌍화차 (고민별)">
-  <div class="product-thumb"><img src="img/ht_ssanghwa.jpg" alt="힘가네 정읍 쌍화차 10개입" loading="lazy"></div>
+<a href="https://naver.me/5l2Aevoc" class="product-item" target="_blank" rel="noopener nofollow sponsored" data-goatcounter-click="hp-ssanghwa" data-goatcounter-title="쌍화차 (고민 01)">
+  <div class="product-thumb"><img src="img/ht_ssanghwa.jpg" alt="힘가네 정읍 쌍화차 10개입" loading="lazy" width="400" height="400"></div>
   <div class="product-body">
     <div class="product-tag">쌍화차</div>
     <div class="product-name">힘가네 정읍 쌍화차 10개입</div>
-    <div class="product-reason">날이 쌀쌀해지면 몸이 으슬으슬하다면, 데워서 마시는 것부터</div>
+    <div class="product-reason">데워서 마시는 쌍화차</div>
     <div class="pb-now">28,800원</div>
     <div class="pb-trust">⭐4.78 · 리뷰 46,415</div>
     <div class="ht-skip">따뜻한 차를 이미 매일 챙긴다면 안 사도 됩니다.</div>
   </div>
-  <div class="product-cta">N 쇼핑에서 보기</div>
+  <div class="product-cta">네이버에서 보기</div>
 </a>
-</div></div>
-<div class="ht-group"><div class="ht-group-title">오후만 되면 방전된다</div>
-<div class="products-grid">
-<a href="https://naver.me/FDc85Heq" class="product-item" target="_blank" rel="noopener nofollow sponsored" data-goatcounter-click="hp-redginseng" data-goatcounter-title="홍삼스틱 (고민별)">
-  <div class="product-thumb"><img src="img/ht_redginseng.jpg" alt="묘미담 6년근 홍삼스틱 100포" loading="lazy"></div>
+<a href="https://naver.me/FaeKMWqR" class="product-item" target="_blank" rel="noopener nofollow sponsored" data-goatcounter-click="hp-pumpkin" data-goatcounter-title="호박즙 (고민 01)">
+  <div class="product-thumb"><img src="img/ht_pumpkin.jpg" alt="자람푸드 늙은 호박즙 30포" loading="lazy" width="400" height="400"></div>
+  <div class="product-body">
+    <div class="product-tag">호박즙</div>
+    <div class="product-name">자람푸드 늙은 호박즙 30포</div>
+    <div class="product-reason">아침에 한 포 마시는 호박즙</div>
+    <div class="pb-now">16,900원</div>
+    <div class="pb-trust">⭐4.84 · 리뷰 5,764</div>
+    <div class="ht-skip">붓기가 며칠씩 이어진다면 상품보다 병원이 먼저입니다.</div>
+  </div>
+  <div class="product-cta">네이버에서 보기</div>
+</a>
+<a href="https://naver.me/5kPwL9UA" class="product-item" target="_blank" rel="noopener nofollow sponsored" data-goatcounter-click="hp-warm_body" data-goatcounter-title="보온 텀블러 (고민 01)">
+  <div class="product-thumb"><img src="img/ht_warm_body.jpg" alt="대용량 보온보냉 스텐 텀블러 1L" loading="lazy" width="400" height="400"></div>
+  <div class="product-body">
+    <div class="product-tag">보온 텀블러</div>
+    <div class="product-name">대용량 보온보냉 스텐 텀블러 1L</div>
+    <div class="product-reason">따뜻한 물을 하루 종일 곁에 두는 보온 텀블러</div>
+    <div class="pb-now">29,900원</div>
+    <div class="pb-trust">⭐4.83 · 리뷰 431</div>
+    <div class="ht-skip">이미 보온병을 들고 다닌다면 안 사도 됩니다.</div>
+  </div>
+  <div class="product-cta">네이버에서 보기</div>
+</a>
+  </div>
+</div>
+<div class="ht-group" id="ht-g02">
+  <div class="ht-group-head">
+    <span class="ht-num" aria-hidden="true">02</span>
+    <span class="ht-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="16" height="10" rx="2"/><line x1="22" x2="22" y1="11" y2="13"/><line x1="6" x2="6" y1="11" y2="13"/></svg></span>
+    <div class="ht-head-txt"><h3 class="ht-group-title">오후만 되면 방전된다</h3><p class="ht-group-sub">점심 지나면 기운이 꺾이고 눈이 침침하다면</p></div>
+  </div>
+  <div class="products-grid">
+<a href="https://naver.me/FDc85Heq" class="product-item" target="_blank" rel="noopener nofollow sponsored" data-goatcounter-click="hp-redginseng" data-goatcounter-title="홍삼스틱 (고민 02)">
+  <div class="product-thumb"><img src="img/ht_redginseng.jpg" alt="묘미담 6년근 홍삼스틱 100포" loading="lazy" width="400" height="400"></div>
   <div class="product-body">
     <div class="product-tag">홍삼스틱</div>
     <div class="product-name">묘미담 6년근 홍삼스틱 100포</div>
-    <div class="product-reason">오후만 되면 기운이 쑥 빠진다면, 한 포씩 챙겨 먹기 쉬운 것부터</div>
+    <div class="product-reason">한 포씩 챙겨 먹기 쉬운 홍삼스틱</div>
     <div class="pb-now">33,500원</div>
     <div class="pb-trust">⭐4.88 · 리뷰 2,076</div>
     <div class="ht-skip">이미 홍삼을 챙겨 드신다면 안 사도 됩니다.</div>
   </div>
-  <div class="product-cta">N 쇼핑에서 보기</div>
+  <div class="product-cta">네이버에서 보기</div>
 </a>
-<a href="https://naver.me/FrirIxZQ" class="product-item" target="_blank" rel="noopener nofollow sponsored" data-goatcounter-click="hp-probiotic" data-goatcounter-title="유산균 (고민별)">
-  <div class="product-thumb"><img src="img/ht_probiotic.jpg" alt="바이오리브 100억 생존 유산균 3개월분" loading="lazy"></div>
+<a href="https://naver.me/FrirIxZQ" class="product-item" target="_blank" rel="noopener nofollow sponsored" data-goatcounter-click="hp-probiotic" data-goatcounter-title="유산균 (고민 02)">
+  <div class="product-thumb"><img src="img/ht_probiotic.jpg" alt="바이오리브 100억 생존 유산균 3개월분" loading="lazy" width="400" height="400"></div>
   <div class="product-body">
     <div class="product-tag">유산균</div>
     <div class="product-name">바이오리브 100억 생존 유산균 3개월분</div>
-    <div class="product-reason">먹기만 하면 속이 더부룩하다면, 하루 한 알 챙기는 것부터</div>
+    <div class="product-reason">하루 한 알 챙기는 유산균</div>
     <div class="pb-now">37,000원</div>
     <div class="pb-trust">⭐4.85 · 리뷰 2,807</div>
     <div class="ht-skip">이미 유산균을 드시고 있다면 안 사도 됩니다.</div>
   </div>
-  <div class="product-cta">N 쇼핑에서 보기</div>
+  <div class="product-cta">네이버에서 보기</div>
 </a>
-</div></div>
-<div class="ht-group"><div class="ht-group-title">자도 자도 개운하지 않다</div>
-<div class="products-grid">
-<a href="https://naver.me/x8k7XpwR" class="product-item" target="_blank" rel="noopener nofollow sponsored" data-goatcounter-click="hp-sleep_mask" data-goatcounter-title="수면안대 (고민별)">
-  <div class="product-thumb"><img src="img/ht_sleep_mask.jpg" alt="이븐리슬립 꿀잠 수면안대" loading="lazy"></div>
+<a href="https://naver.me/xktAkcLO" class="product-item" target="_blank" rel="noopener nofollow sponsored" data-goatcounter-click="hp-chimhyang" data-goatcounter-title="침향환 (고민 02)">
+  <div class="product-thumb"><img src="img/ht_chimhyang.jpg" alt="조선비책 발효 침향환 60환" loading="lazy" width="400" height="400"></div>
+  <div class="product-body">
+    <div class="product-tag">침향환</div>
+    <div class="product-name">조선비책 발효 침향환 60환</div>
+    <div class="product-reason">하루 한 알 챙기는 침향환</div>
+    <div class="pb-now">99,000원</div>
+    <div class="pb-trust">⭐4.87 · 리뷰 77,795</div>
+    <div class="ht-skip">가격이 부담된다면 홍삼스틱부터 챙겨도 충분합니다.</div>
+  </div>
+  <div class="product-cta">네이버에서 보기</div>
+</a>
+<a href="https://naver.me/xF4WkxOs" class="product-item" target="_blank" rel="noopener nofollow sponsored" data-goatcounter-click="hp-lutein" data-goatcounter-title="루테인 (고민 02)">
+  <div class="product-thumb"><img src="img/ht_lutein.jpg" alt="뉴트원 루테인 지아잔틴 30캡슐" loading="lazy" width="400" height="400"></div>
+  <div class="product-body">
+    <div class="product-tag">루테인</div>
+    <div class="product-name">뉴트원 루테인 지아잔틴 30캡슐</div>
+    <div class="product-reason">하루 한 알 챙기는 루테인</div>
+    <div class="pb-now">19,000원</div>
+    <div class="pb-trust">⭐4.84 · 리뷰 1,226</div>
+    <div class="ht-skip">이미 눈 영양제를 드신다면 안 사도 됩니다.</div>
+  </div>
+  <div class="product-cta">네이버에서 보기</div>
+</a>
+  </div>
+</div>
+<div class="ht-group" id="ht-g03">
+  <div class="ht-group-head">
+    <span class="ht-num" aria-hidden="true">03</span>
+    <span class="ht-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></span>
+    <div class="ht-head-txt"><h3 class="ht-group-title">자도 자도 개운하지 않다</h3><p class="ht-group-sub">밤새 뒤척이고 아침에도 피곤하다면</p></div>
+  </div>
+  <div class="products-grid">
+<a href="https://naver.me/x8k7XpwR" class="product-item" target="_blank" rel="noopener nofollow sponsored" data-goatcounter-click="hp-sleep_mask" data-goatcounter-title="수면안대 (고민 03)">
+  <div class="product-thumb"><img src="img/ht_sleep_mask.jpg" alt="이븐리슬립 꿀잠 수면안대" loading="lazy" width="400" height="400"></div>
   <div class="product-body">
     <div class="product-tag">수면안대</div>
     <div class="product-name">이븐리슬립 꿀잠 수면안대</div>
-    <div class="product-reason">자도 자도 개운하지 않다면, 빛을 막아 깊이 자게 돕는 것부터</div>
+    <div class="product-reason">빛을 막아 깊이 자게 돕는 수면안대</div>
     <div class="pb-now">16,600원</div>
     <div class="pb-trust">⭐4.86 · 리뷰 1,594</div>
     <div class="ht-skip">이미 방이 완전히 깜깜하다면 안 사도 됩니다.</div>
   </div>
-  <div class="product-cta">N 쇼핑에서 보기</div>
+  <div class="product-cta">네이버에서 보기</div>
 </a>
-<a href="https://naver.me/Fx2EltuY" class="product-item" target="_blank" rel="noopener nofollow sponsored" data-goatcounter-click="hp-warm_eye" data-goatcounter-title="온열안대 (고민별)">
-  <div class="product-thumb"><img src="img/ht_warm_eye.jpg" alt="닥터하르 라벤더 온열 수면안대 1+1" loading="lazy"></div>
-  <div class="product-body">
-    <div class="product-tag">온열안대</div>
-    <div class="product-name">닥터하르 라벤더 온열 수면안대 1+1</div>
-    <div class="product-reason">화면만 보면 눈이 뻑뻑하고 무겁다면, 눈가를 따뜻하게 데워 주는 것부터</div>
-    <div class="pb-now">9,800원</div>
-    <div class="pb-trust">⭐4.96 · 리뷰 575</div>
-    <div class="ht-skip">매일 따뜻한 수건 찜질을 하고 있다면 안 사도 됩니다.</div>
-  </div>
-  <div class="product-cta">N 쇼핑에서 보기</div>
-</a>
-<a href="https://naver.me/IDkmqnoY" class="product-item" target="_blank" rel="noopener nofollow sponsored" data-goatcounter-click="hp-footbath" data-goatcounter-title="족욕기 (고민별)">
-  <div class="product-thumb"><img src="img/ht_footbath.jpg" alt="무탈 족욕기" loading="lazy"></div>
+<a href="https://naver.me/IDkmqnoY" class="product-item" target="_blank" rel="noopener nofollow sponsored" data-goatcounter-click="hp-footbath" data-goatcounter-title="족욕기 (고민 03)">
+  <div class="product-thumb"><img src="img/ht_footbath.jpg" alt="무탈 족욕기" loading="lazy" width="400" height="400"></div>
   <div class="product-body">
     <div class="product-tag">족욕기</div>
     <div class="product-name">무탈 족욕기</div>
-    <div class="product-reason">발이 시려서 잠이 안 온다면, 발을 따뜻한 물에 담그는 것부터</div>
+    <div class="product-reason">발을 따뜻한 물에 담그는 족욕기</div>
     <div class="pb-now">14,900원</div>
     <div class="pb-trust">⭐4.79 · 리뷰 6,066</div>
     <div class="ht-skip">매일 반신욕을 하고 있다면 안 사도 됩니다.</div>
   </div>
-  <div class="product-cta">N 쇼핑에서 보기</div>
+  <div class="product-cta">네이버에서 보기</div>
 </a>
-</div></div>
+<a href="https://naver.me/FdqksZv1" class="product-item" target="_blank" rel="noopener nofollow sponsored" data-goatcounter-click="hp-sleep_2" data-goatcounter-title="경추베개 (고민 03)">
+  <div class="product-thumb"><img src="img/ht_sleep_2.jpg" alt="나즘베개 경추베개 Type S/L" loading="lazy" width="400" height="400"></div>
+  <div class="product-body">
+    <div class="product-tag">경추베개</div>
+    <div class="product-name">나즘베개 경추베개 Type S/L</div>
+    <div class="product-reason">목 높이를 맞춰 주는 경추베개</div>
+    <div class="pb-now">96,300원</div>
+    <div class="pb-trust">⭐4.81 · 리뷰 459</div>
+    <div class="ht-skip">지금 베개가 목에 잘 맞는다면 안 사도 됩니다.</div>
+  </div>
+  <div class="product-cta">네이버에서 보기</div>
+</a>
+<a href="https://naver.me/xF4ApUNs" class="product-item" target="_blank" rel="noopener nofollow sponsored" data-goatcounter-click="hp-sleep_3" data-goatcounter-title="수면 귀마개 (고민 03)">
+  <div class="product-thumb"><img src="img/ht_sleep_3.jpg" alt="포낙 세레니티 수면 귀마개" loading="lazy" width="400" height="400"></div>
+  <div class="product-body">
+    <div class="product-tag">수면 귀마개</div>
+    <div class="product-name">포낙 세레니티 수면 귀마개</div>
+    <div class="product-reason">밤 소음을 줄여 주는 수면 귀마개</div>
+    <div class="pb-now">39,900원</div>
+    <div class="pb-trust">⭐4.51 · 리뷰 3,626</div>
+    <div class="ht-skip">조용한 방에서 잘 잔다면 안 사도 됩니다.</div>
+  </div>
+  <div class="product-cta">네이버에서 보기</div>
+</a>
+  </div>
+</div>
 </section>
 </div>
 <script>
 (function(){
-  var P={"sleep_mask": {"short": "수면안대", "name": "이븐리슬립 꿀잠 수면안대", "symptom": "자도 자도 개운하지 않다", "past": "빛을 가려 주던 검은 무명 천", "use": "빛을 막아 깊이 자게 돕는", "skip": "이미 방이 완전히 깜깜하다면 안 사도 됩니다.", "price": 16600, "rating": 4.86, "reviews": 1594, "link": "https://naver.me/x8k7XpwR", "img": "img/ht_sleep_mask.jpg"}, "warm_eye": {"short": "온열안대", "name": "닥터하르 라벤더 온열 수면안대 1+1", "symptom": "화면만 보면 눈이 뻑뻑하고 무겁다", "past": "눈 위에 올리던 따뜻한 수건", "use": "눈가를 따뜻하게 데워 주는", "skip": "매일 따뜻한 수건 찜질을 하고 있다면 안 사도 됩니다.", "price": 9800, "rating": 4.96, "reviews": 575, "link": "https://naver.me/Fx2EltuY", "img": "img/ht_warm_eye.jpg"}, "ginger": {"short": "생강청", "name": "힘가네 생강청 600g", "symptom": "손발이 차고 아침이 무겁다", "past": "아침마다 끓여 둔 생강차", "use": "물에 타서 몸을 데워 마시는", "skip": "생강 맛이 맞지 않으면 안 사도 됩니다.", "price": 26800, "rating": 4.8, "reviews": 76028, "link": "https://naver.me/GuD6zTXP", "img": "img/ht_ginger.jpg"}, "redginseng": {"short": "홍삼스틱", "name": "묘미담 6년근 홍삼스틱 100포", "symptom": "오후만 되면 기운이 쑥 빠진다", "past": "달여 둔 인삼차 한 사발", "use": "한 포씩 챙겨 먹기 쉬운", "skip": "이미 홍삼을 챙겨 드신다면 안 사도 됩니다.", "price": 33500, "rating": 4.88, "reviews": 2076, "link": "https://naver.me/FDc85Heq", "img": "img/ht_redginseng.jpg"}, "ssanghwa": {"short": "쌍화차", "name": "힘가네 정읍 쌍화차 10개입", "symptom": "날이 쌀쌀해지면 몸이 으슬으슬하다", "past": "따뜻하게 데운 쌍화탕 한 사발", "use": "데워서 마시는", "skip": "따뜻한 차를 이미 매일 챙긴다면 안 사도 됩니다.", "price": 28800, "rating": 4.78, "reviews": 46415, "link": "https://naver.me/5l2Aevoc", "img": "img/ht_ssanghwa.jpg"}, "footbath": {"short": "족욕기", "name": "무탈 족욕기", "symptom": "발이 시려서 잠이 안 온다", "past": "뜨거운 물을 받은 나무 대야", "use": "발을 따뜻한 물에 담그는", "skip": "매일 반신욕을 하고 있다면 안 사도 됩니다.", "price": 14900, "rating": 4.79, "reviews": 6066, "link": "https://naver.me/IDkmqnoY", "img": "img/ht_footbath.jpg"}, "probiotic": {"short": "유산균", "name": "바이오리브 100억 생존 유산균 3개월분", "symptom": "먹기만 하면 속이 더부룩하다", "past": "집에서 담근 장과 식혜", "use": "하루 한 알 챙기는", "skip": "이미 유산균을 드시고 있다면 안 사도 됩니다.", "price": 37000, "rating": 4.85, "reviews": 2807, "link": "https://naver.me/FrirIxZQ", "img": "img/ht_probiotic.jpg"}, "pumpkin": {"short": "호박즙", "name": "자람푸드 늙은 호박즙 30포", "symptom": "아침마다 얼굴이 붓는다", "past": "푹 고아 낸 늙은 호박물", "use": "아침에 한 포 마시는", "skip": "붓기가 며칠씩 이어진다면 상품보다 병원이 먼저입니다.", "price": 16900, "rating": 4.84, "reviews": 5764, "link": "https://naver.me/FaeKMWqR", "img": "img/ht_pumpkin.jpg"}};
+  var P={"sleep_mask": {"short": "수면안대", "name": "이븐리슬립 꿀잠 수면안대", "symptom": "자도 자도 개운하지 않다", "past": "빛을 가려 주던 검은 무명 천", "use": "빛을 막아 깊이 자게 돕는", "skip": "이미 방이 완전히 깜깜하다면 안 사도 됩니다.", "price": 16600, "rating": 4.86, "reviews": 1594, "link": "https://naver.me/x8k7XpwR", "img": "img/ht_sleep_mask.jpg"}, "warm_eye": {"short": "온열안대", "name": "닥터하르 라벤더 온열 수면안대 1+1", "symptom": "화면만 보면 눈이 뻑뻑하고 무겁다", "past": "눈 위에 올리던 따뜻한 수건", "use": "눈가를 따뜻하게 데워 주는", "skip": "매일 따뜻한 수건 찜질을 하고 있다면 안 사도 됩니다.", "price": 9800, "rating": 4.96, "reviews": 575, "link": "https://naver.me/Fx2EltuY", "img": "img/ht_warm_eye.jpg"}, "ginger": {"short": "생강청", "name": "힘가네 생강청 600g", "symptom": "손발이 차고 아침이 무겁다", "past": "아침마다 끓여 둔 생강차", "use": "물에 타서 몸을 데워 마시는", "skip": "생강 맛이 맞지 않으면 안 사도 됩니다.", "price": 26800, "rating": 4.8, "reviews": 76028, "link": "https://naver.me/GuD6zTXP", "img": "img/ht_ginger.jpg"}, "redginseng": {"short": "홍삼스틱", "name": "묘미담 6년근 홍삼스틱 100포", "symptom": "오후만 되면 기운이 쑥 빠진다", "past": "달여 둔 인삼차 한 사발", "use": "한 포씩 챙겨 먹기 쉬운", "skip": "이미 홍삼을 챙겨 드신다면 안 사도 됩니다.", "price": 33500, "rating": 4.88, "reviews": 2076, "link": "https://naver.me/FDc85Heq", "img": "img/ht_redginseng.jpg"}, "ssanghwa": {"short": "쌍화차", "name": "힘가네 정읍 쌍화차 10개입", "symptom": "날이 쌀쌀해지면 몸이 으슬으슬하다", "past": "따뜻하게 데운 쌍화탕 한 사발", "use": "데워서 마시는", "skip": "따뜻한 차를 이미 매일 챙긴다면 안 사도 됩니다.", "price": 28800, "rating": 4.78, "reviews": 46415, "link": "https://naver.me/5l2Aevoc", "img": "img/ht_ssanghwa.jpg"}, "footbath": {"short": "족욕기", "name": "무탈 족욕기", "symptom": "발이 시려서 잠이 안 온다", "past": "뜨거운 물을 받은 나무 대야", "use": "발을 따뜻한 물에 담그는", "skip": "매일 반신욕을 하고 있다면 안 사도 됩니다.", "price": 14900, "rating": 4.79, "reviews": 6066, "link": "https://naver.me/IDkmqnoY", "img": "img/ht_footbath.jpg"}, "probiotic": {"short": "유산균", "name": "바이오리브 100억 생존 유산균 3개월분", "symptom": "먹기만 하면 속이 더부룩하다", "past": "집에서 담근 장과 식혜", "use": "하루 한 알 챙기는", "skip": "이미 유산균을 드시고 있다면 안 사도 됩니다.", "price": 37000, "rating": 4.85, "reviews": 2807, "link": "https://naver.me/FrirIxZQ", "img": "img/ht_probiotic.jpg"}, "pumpkin": {"short": "호박즙", "name": "자람푸드 늙은 호박즙 30포", "symptom": "아침마다 얼굴이 붓는다", "past": "푹 고아 낸 늙은 호박물", "use": "아침에 한 포 마시는", "skip": "붓기가 며칠씩 이어진다면 상품보다 병원이 먼저입니다.", "price": 16900, "rating": 4.84, "reviews": 5764, "link": "https://naver.me/FaeKMWqR", "img": "img/ht_pumpkin.jpg"}, "chimhyang": {"short": "침향환", "name": "조선비책 발효 침향환 60환", "symptom": "오후만 되면 기운이 바닥난다", "past": "귀하게 아껴 먹던 환약 한 알", "use": "하루 한 알 챙기는", "skip": "가격이 부담된다면 홍삼스틱부터 챙겨도 충분합니다.", "price": 99000, "rating": 4.87, "reviews": 77795, "link": "https://naver.me/xktAkcLO", "img": "img/ht_chimhyang.jpg"}, "lutein": {"short": "루테인", "name": "뉴트원 루테인 지아잔틴 30캡슐", "symptom": "오후만 되면 눈이 침침하고 무겁다", "past": "눈을 쉬게 하던 따뜻한 수건", "use": "하루 한 알 챙기는", "skip": "이미 눈 영양제를 드신다면 안 사도 됩니다.", "price": 19000, "rating": 4.84, "reviews": 1226, "link": "https://naver.me/xF4WkxOs", "img": "img/ht_lutein.jpg"}, "warm_body": {"short": "보온 텀블러", "name": "대용량 보온보냉 스텐 텀블러 1L", "symptom": "하루 종일 손발이 차고 몸이 식는다", "past": "품에 안고 다니던 따뜻한 물 주머니", "use": "따뜻한 물을 하루 종일 곁에 두는", "skip": "이미 보온병을 들고 다닌다면 안 사도 됩니다.", "price": 29900, "rating": 4.83, "reviews": 431, "link": "https://naver.me/5kPwL9UA", "img": "img/ht_warm_body.jpg"}, "sleep_2": {"short": "경추베개", "name": "나즘베개 경추베개 Type S/L", "symptom": "자고 일어나도 목과 어깨가 뻐근하다", "past": "목에 맞춰 짠 낮은 목침", "use": "목 높이를 맞춰 주는", "skip": "지금 베개가 목에 잘 맞는다면 안 사도 됩니다.", "price": 96300, "rating": 4.81, "reviews": 459, "link": "https://naver.me/FdqksZv1", "img": "img/ht_sleep_2.jpg"}, "sleep_3": {"short": "수면 귀마개", "name": "포낙 세레니티 수면 귀마개", "symptom": "작은 소리에도 자꾸 깬다", "past": "귀를 막아 주던 솜뭉치", "use": "밤 소음을 줄여 주는", "skip": "조용한 방에서 잘 잔다면 안 사도 됩니다.", "price": 39900, "rating": 4.51, "reviews": 3626, "link": "https://naver.me/xF4ApUNs", "img": "img/ht_sleep_3.jpg"}};
   var E=[{"t": "2026-10-29T11:00:00Z", "p": "ginger"}, {"t": "2026-10-31T11:00:00Z", "p": "redginseng"}];
   var now=Date.now(), cur=null;
   for (var i=0;i<E.length;i++){ var t=Date.parse(E[i].t); if(t<=now && (!cur || t>=Date.parse(cur.t))) cur=E[i]; }
@@ -883,92 +963,9 @@
 <!-- PRODUCTS_START -->
 <div class="bridge"><div class="bridge-line">당신의 <em>전생</em>이 말하는 운,<br>알기만 해선 바뀌지 않습니다</div><div class="bridge-sub">오늘부터 그 운을 끌어올릴 개운템,<br><b>전생시그널이 직접 골랐습니다</b></div><div class="bridge-arrow">▾</div></div>
 
-<div class="proofbar"><div class="pf"><b><span class="cu" data-to="157174" data-dec="0" data-suffix="+">0</span></b><span>검증된 누적 리뷰</span></div><div class="pf"><b><span class="cu-prefix">⭐</span><span class="cu" data-to="4.80" data-dec="2">0</span></b><span>평균 평점</span></div><div class="pf"><b><span class="cu" data-to="24" data-dec="0" data-suffix="종">0</span></b><span>엄선한 개운·재물템</span></div></div>
+<div class="proofbar"><div class="pf"><b><span class="cu" data-to="294437" data-dec="0" data-suffix="+">0</span></b><span>검증된 누적 리뷰</span></div><div class="pf"><b><span class="cu-prefix">⭐</span><span class="cu" data-to="4.78" data-dec="2">0</span></b><span>평균 평점</span></div><div class="pf"><b><span class="cu" data-to="30" data-dec="0" data-suffix="종">0</span></b><span>엄선한 개운·재물템</span></div></div>
 
 <div class="notice-bar">본 페이지는 네이버 브랜드커넥트 활동의 일환으로, 링크를 통해 구매 시 수수료를 제공받습니다</div>
-
-<section class="products-section">
-  <div class="section-head">
-    <div class="section-label">FOR HEALTH</div>
-    <div class="section-title">🌿 건강운·기력</div>
-    <div class="section-sub" style="color:var(--text-dim);font-size:12.5px;margin-top:6px;">기력이 곧 재물운, 몸부터 채우는 처방</div>
-    <div class="divider"></div>
-  </div>
-
-  <div class="products-grid">
-<a href="https://naver.me/xktAkcLO" class="product-item hot" target="_blank" rel="noopener nofollow sponsored">
-  <div class="product-thumb"><div class="pick-badge">✦ PICK</div><img src="img/health1.jpg" alt="조선비책 발효 침향환 60환" loading="lazy"></div>
-  <div class="product-body">
-    <div class="product-tag">BEST · 🌿</div>
-    <div class="product-name">조선비책 발효 침향환 60환</div>
-    <div class="product-reason">자도 자도 피곤하면 기력이 빈 신호입니다</div>
-    <div class="pb-now">99,000원</div>
-    <div class="pb-trust">⭐4.87 · 리뷰 74,825</div>
-  </div>
-  <div class="product-cta">N 쇼핑에서 보기</div>
-</a>
-
-<a href="https://naver.me/Fz8XGldM" class="product-item" target="_blank" rel="noopener nofollow sponsored">
-  <div class="product-thumb"><img src="img/health2_v2.jpg" alt="락토필듀오 질유산균 60캡슐" loading="lazy"></div>
-  <div class="product-body">
-    <div class="product-tag">인기 · 🌿</div>
-    <div class="product-name">락토필듀오 질유산균 60캡슐</div>
-    <div class="product-reason">말 못 할 그 불편함, 하루 한 캡슐로</div>
-    <div class="pb-now">49,000원</div>
-    <div class="pb-trust">⭐4.9 · 리뷰 4,993</div>
-  </div>
-  <div class="product-cta">N 쇼핑에서 보기</div>
-</a>
-
-<a href="https://naver.me/5dhk6UjB" class="product-item" target="_blank" rel="noopener nofollow sponsored">
-  <div class="product-thumb"><img src="img/health3_v2.jpg" alt="왕의환 공진단 선물상자" loading="lazy"></div>
-  <div class="product-body">
-    <div class="product-tag">인기 · 🌿</div>
-    <div class="product-name">왕의환 공진단 선물상자</div>
-    <div class="product-reason">부모님 기력 선물, 고민은 여기서 끝</div>
-    <div class="pb-now">240,000원</div>
-    <div class="pb-trust">⭐4.96 · 리뷰 2,883</div>
-  </div>
-  <div class="product-cta">N 쇼핑에서 보기</div>
-</a>
-
-<a href="https://naver.me/FDc85Heq" class="product-item" target="_blank" rel="noopener nofollow sponsored">
-  <div class="product-thumb"><img src="img/health4_v2.jpg" alt="묘미담 6년근 홍삼스틱 100포" loading="lazy"></div>
-  <div class="product-body">
-    <div class="product-tag">NEW · 🌿</div>
-    <div class="product-name">묘미담 6년근 홍삼스틱 100포</div>
-    <div class="product-reason">아침이 무거운 날, 출근길에 한 포</div>
-    <div class="pb-now">33,500원</div>
-    <div class="pb-trust">⭐4.88 · 리뷰 2,041</div>
-  </div>
-  <div class="product-cta">N 쇼핑에서 보기</div>
-</a>
-
-<a href="https://naver.me/xF4WkxOs" class="product-item" target="_blank" rel="noopener nofollow sponsored">
-  <div class="product-thumb"><img src="img/health5_v2.jpg" alt="뉴트원 루테인 지아잔틴 30캡슐" loading="lazy"></div>
-  <div class="product-body">
-    <div class="product-tag">NEW · 🌿</div>
-    <div class="product-name">뉴트원 루테인 지아잔틴 30캡슐</div>
-    <div class="product-reason">폰만 보면 침침해지는 눈, 하루 한 알</div>
-    <div class="pb-now">19,000원</div>
-    <div class="pb-trust">⭐4.84 · 리뷰 1,224</div>
-  </div>
-  <div class="product-cta">N 쇼핑에서 보기</div>
-</a>
-
-<a href="https://naver.me/GWWEtSTH" class="product-item" target="_blank" rel="noopener nofollow sponsored">
-  <div class="product-thumb"><img src="img/health6_v2.jpg" alt="순수식품 어린이 홍삼스틱 60포" loading="lazy"></div>
-  <div class="product-body">
-    <div class="product-tag">NEW · 🌿</div>
-    <div class="product-name">순수식품 어린이 홍삼스틱 60포</div>
-    <div class="product-reason">환절기마다 앓는 아이, 면역부터 채우세요</div>
-    <div class="pb-now">32,600원</div>
-    <div class="pb-trust">⭐4.83 · 리뷰 1,058</div>
-  </div>
-  <div class="product-cta">N 쇼핑에서 보기</div>
-</a>
-  </div>
-</section>
 
 <section class="products-section">
   <div class="section-head">
